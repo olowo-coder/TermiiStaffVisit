@@ -49,6 +49,7 @@
     </dependencies>
 
     <build>
+        <finalName>Termii-Visit-App</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
