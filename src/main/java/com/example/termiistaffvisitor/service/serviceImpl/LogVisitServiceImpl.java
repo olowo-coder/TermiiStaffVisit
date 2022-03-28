@@ -2,6 +2,7 @@ package com.example.termiistaffvisitor.service.serviceImpl;
 
 import com.example.termiistaffvisitor.dto.LogVisitDto;
 import com.example.termiistaffvisitor.dto.VisitRequest;
+import com.example.termiistaffvisitor.mail.EmailService;
 import com.example.termiistaffvisitor.model.Staff;
 import com.example.termiistaffvisitor.model.Visit;
 import com.example.termiistaffvisitor.model.Visitor;
@@ -40,6 +41,7 @@ public class LogVisitServiceImpl implements LogVisitService {
         visit.setVisitor(visitor);
         visit.setDate_of_visit(request.getDate_of_visit());
         visit.setReason_for_visit(request.getReason_for_visit());
+        EmailService.sendingEmail(staff, visitor);
         visitRepository.save(visit);
         return LogVisitDto.builder().status("Logged visit successfully").build();
     }
